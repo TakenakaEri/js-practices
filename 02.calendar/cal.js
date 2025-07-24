@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import minimist from "minimist";
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData.js";
