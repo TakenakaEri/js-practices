@@ -16,10 +16,10 @@ const month = args.m ?? currentDate.month() + 1;
 const targetDate = dayjs(`${year}-${month}-01`);
 const dayMonth = targetDate.daysInMonth();
 const monthName = targetDate.format("M月 YYYY");
-const DayOfWeek = "日 月 火 水 木 金 土";
+const dayOfWeek = "日 月 火 水 木 金 土";
 
 console.log("      " + monthName + "        ");
-console.log(DayOfWeek + "  ");
+console.log(dayOfWeek + "  ");
 
 const firstDayOfWeek = targetDate.day();
 let calendarLine = "";
