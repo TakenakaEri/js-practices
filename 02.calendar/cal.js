@@ -32,11 +32,11 @@ for (let day = 1; day <= dayMonth; day++) {
   const currentDate = targetDate.date(day);
   const currentWeekday = currentDate.day();
   if (currentWeekday === 6) {
-    console.log(calendarLine.trimEnd() + "  ");
+    console.log(calendarLine);
     calendarLine = "";
   }
 }
 if (calendarLine !== "") {
-  console.log(calendarLine.trimEnd().padEnd(22, " "));
+  console.log(calendarLine);
 }
 console.log(" ".repeat(22));
