@@ -28,7 +28,9 @@ calendarLine += "   ".repeat(firstDayOfWeek);
 
 for (let day = 1; day <= dayMonth; day++) {
   const padded = String(day).padStart(2, " ");
-  calendarLine += padded + " ";
+  // 文字列結合ではなくテンプレート文字列
+  // calendarLine += padded + " ";
+  calendarLine += `${padded} `;
   const currentWeekday = (firstDayOfWeek + day - 1) % 7;
   if (currentWeekday === 6) {
     console.log(calendarLine.trimEnd() + "  ");
