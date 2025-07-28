@@ -3,7 +3,6 @@ import minimist from "minimist";
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData.js";
 dayjs.extend(localeData);
-dayjs.locale("ja");
 
 const args = minimist(process.argv.slice(2));
 
