@@ -15,11 +15,11 @@ const month = args.m ?? currentDate.month() + 1;
 
 const targetDate = dayjs(`${year}-${month}-01`);
 const dayMonth = targetDate.daysInMonth();
-const monthName = targetDate.format("M月 YYYY年");
+const monthName = targetDate.format("M月 YYYY");
 const DayOfWeek = "日 月 火 水 木 金 土";
 
-console.log(monthName.padStart(14, " "));
-console.log(DayOfWeek);
+console.log("      " + monthName + "        ");
+console.log(DayOfWeek + "  ");
 
 const firstDayOfWeek = targetDate.day();
 let calendarLine = "";
@@ -31,10 +31,11 @@ for (let day = 1; day <= dayMonth; day++) {
   calendarLine += padded + " ";
   const currentWeekday = (firstDayOfWeek + day - 1) % 7;
   if (currentWeekday === 6) {
-    console.log(calendarLine.trimEnd());
+    console.log(calendarLine.trimEnd() + "  ");
     calendarLine = "";
   }
 }
 if (calendarLine !== "") {
-  console.log(calendarLine.trimEnd());
+  console.log(calendarLine.trimEnd().padEnd(22, " "));
 }
+console.log(" ".repeat(22));
