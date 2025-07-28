@@ -28,8 +28,8 @@ calendarLine += "   ".repeat(firstDayOfWeek);
 for (let day = 1; day <= dayMonth; day++) {
   const padded = String(day).padStart(2, " ");
   calendarLine += `${padded} `;
-  const currentDate = targetDate.date(day);
-  const currentWeekday = currentDate.day();
+  const dateObj = dayjs(`${year}-${month}-${day}`);
+  const currentWeekday = dateObj.day();
   if (currentWeekday === 6) {
     console.log(calendarLine);
     calendarLine = "";
