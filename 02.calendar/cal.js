@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 import minimist from "minimist";
 import dayjs from "dayjs";
-import localeData from "dayjs/plugin/localeData.js";
-dayjs.extend(localeData);
 
 const args = minimist(process.argv.slice(2));
 
