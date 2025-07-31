@@ -5,10 +5,8 @@ import dayjs from "dayjs";
 const args = minimist(process.argv.slice(2));
 
 const now = dayjs();
-
-const currentDate = now;
-const year = args.y ?? currentDate.year();
-const month = args.m ?? currentDate.month() + 1;
+const year = args.y ?? now.year();
+const month = args.m ?? now.month() + 1;
 
 const targetDate = dayjs(`${year}-${month}-01`);
 const dayMonth = targetDate.daysInMonth();
