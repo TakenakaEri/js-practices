@@ -18,7 +18,7 @@ function centerText(text, width = 20) {
   const padding = Math.max(0, width - text.length);
   const padLeft = Math.floor(padding / 2);
   const padRight = padding - padLeft;
-  return " ".repeat(padLeft) + text + " ".repeat(padRight);
+  return `${" ".repeat(padLeft)}${text}${" ".repeat(padRight)}`;
 }
 
 console.log(centerText(`${monthName}`, 20));
