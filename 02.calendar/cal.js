@@ -29,17 +29,19 @@ let calendarLine = [];
 const firstDayOfWeek = targetDate.day();
 calendarLine = Array(firstDayOfWeek).fill("  ");
 
+let dateObj = targetDate;
+
 for (let day = 1; day <= dayMonth; day++) {
   const padded = String(day).padStart(2, " ");
   calendarLine.push(padded);
 
-  const dateObj = targetDate.set("date", day);
   const currentWeekday = dateObj.day();
 
   if (currentWeekday === 6) {
     console.log(calendarLine.join(" "));
     calendarLine = [];
   }
+  dateObj = dateObj.add(1, "day");
 }
 if (calendarLine.length > 0) {
   console.log(calendarLine.join(" "));
