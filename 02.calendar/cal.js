@@ -14,8 +14,15 @@ const dayMonth = targetDate.daysInMonth();
 const monthName = targetDate.format("M月 YYYY");
 const dayOfWeek = "日 月 火 水 木 金 土";
 
-console.log("      " + monthName + "        ");
-console.log(dayOfWeek + "  ");
+function centerText(text, width = 20) {
+  const padding = Math.max(0, width - text.length);
+  const padLeft = Math.floor(padding / 2);
+  const padRight = padding - padLeft;
+  return " ".repeat(padLeft) + text + " ".repeat(padRight);
+}
+
+console.log(centerText(`${monthName}`, 20));
+console.log(dayOfWeek);
 
 const firstDayOfWeek = targetDate.day();
 let calendarLine = "";
@@ -36,4 +43,4 @@ for (let day = 1; day <= dayMonth; day++) {
 if (calendarLine !== "") {
   console.log(calendarLine);
 }
-console.log(" ".repeat(22));
+console.log(" ".repeat(20));
