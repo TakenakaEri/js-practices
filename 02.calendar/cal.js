@@ -5,10 +5,11 @@ import dayjs from "dayjs";
 const args = minimist(process.argv.slice(2));
 
 const now = dayjs();
-const year = args.y ?? now.year();
-const month = args.m ?? now.month() + 1;
+const targetDate = now
+  .set("year", args.y ?? now.year())
+  .set("month", (args.m ?? now.month() + 1) - 1)
+  .startOf("month");
 
-const targetDate = dayjs(`${year}-${month}-01`);
 const dayMonth = targetDate.daysInMonth();
 const monthName = targetDate.format("M月 YYYY");
 const dayOfWeek = "日 月 火 水 木 金 土";
@@ -24,7 +25,8 @@ calendarLine += "   ".repeat(firstDayOfWeek);
 for (let day = 1; day <= dayMonth; day++) {
   const padded = String(day).padStart(2, " ");
   calendarLine += `${padded} `;
-  const dateObj = dayjs(`${year}-${month}-${day}`);
+  const dateObj = targetDate.set("date", day);
+
   const currentWeekday = dateObj.day();
   if (currentWeekday === 6) {
     console.log(calendarLine);
