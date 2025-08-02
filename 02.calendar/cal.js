@@ -24,10 +24,8 @@ function centerText(text, width = 20) {
 console.log(centerText(`${monthName}`, 20));
 console.log(dayOfWeek);
 
-let calendarLine = [];
-
 const firstDayOfWeek = targetDate.day();
-calendarLine = Array(firstDayOfWeek).fill("  ");
+let calendarLine = Array(firstDayOfWeek).fill("  ");
 
 let dateObj = targetDate;
 
