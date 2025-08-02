@@ -24,23 +24,24 @@ function centerText(text, width = 20) {
 console.log(centerText(`${monthName}`, 20));
 console.log(dayOfWeek);
 
-const firstDayOfWeek = targetDate.day();
-let calendarLine = "";
+let calendarLine = [];
 
-calendarLine += "   ".repeat(firstDayOfWeek);
+const firstDayOfWeek = targetDate.day();
+calendarLine = Array(firstDayOfWeek).fill("  ");
 
 for (let day = 1; day <= dayMonth; day++) {
   const padded = String(day).padStart(2, " ");
-  calendarLine += `${padded} `;
-  const dateObj = targetDate.set("date", day);
+  calendarLine.push(padded);
 
+  const dateObj = targetDate.set("date", day);
   const currentWeekday = dateObj.day();
+
   if (currentWeekday === 6) {
-    console.log(calendarLine);
-    calendarLine = "";
+    console.log(calendarLine.join(" "));
+    calendarLine = [];
   }
 }
-if (calendarLine !== "") {
-  console.log(calendarLine);
+if (calendarLine.length > 0) {
+  console.log(calendarLine.join(" "));
 }
 console.log(" ".repeat(20));
