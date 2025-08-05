@@ -3,6 +3,13 @@
 import minimist from "minimist";
 import dayjs from "dayjs";
 
+function centerText(text, width = 20) {
+  const padding = Math.max(0, width - text.length);
+  const padLeft = Math.floor(padding / 2);
+  const padRight = padding - padLeft;
+  return `${" ".repeat(padLeft)}${text}${" ".repeat(padRight)}`;
+}
+
 const args = minimist(process.argv.slice(2));
 
 const now = dayjs();
@@ -13,13 +20,6 @@ const targetDate = now
 
 const monthName = targetDate.format("M月 YYYY");
 const dayOfWeek = "日 月 火 水 木 金 土";
-
-function centerText(text, width = 20) {
-  const padding = Math.max(0, width - text.length);
-  const padLeft = Math.floor(padding / 2);
-  const padRight = padding - padLeft;
-  return `${" ".repeat(padLeft)}${text}${" ".repeat(padRight)}`;
-}
 
 console.log(centerText(`${monthName}`, 20));
 console.log(dayOfWeek);
