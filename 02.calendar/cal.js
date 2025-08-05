@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import minimist from "minimist";
 import dayjs from "dayjs";
 
@@ -10,7 +11,6 @@ const targetDate = now
   .set("month", (args.m ?? now.month() + 1) - 1)
   .startOf("month");
 
-const dayMonth = targetDate.daysInMonth();
 const monthName = targetDate.format("M月 YYYY");
 const dayOfWeek = "日 月 火 水 木 金 土";
 
@@ -27,21 +27,24 @@ console.log(dayOfWeek);
 const firstDayOfWeek = targetDate.day();
 let calendarLine = Array(firstDayOfWeek).fill("  ");
 
-let dateObj = targetDate;
+const endDate = targetDate.endOf("month");
 
-for (let day = 1; day <= dayMonth; day++) {
-  const padded = String(day).padStart(2, " ");
+for (
+  let dateObj = targetDate;
+  dateObj.isSame(endDate) || dateObj.isBefore(endDate);
+  dateObj = dateObj.add(1, "day")
+) {
+  const padded = String(dateObj.date()).padStart(2, " ");
   calendarLine.push(padded);
 
-  const currentWeekday = dateObj.day();
-
-  if (currentWeekday === 6) {
+  if (dateObj.day() === 6) {
     console.log(calendarLine.join(" "));
     calendarLine = [];
   }
-  dateObj = dateObj.add(1, "day");
 }
+
 if (calendarLine.length > 0) {
   console.log(calendarLine.join(" "));
 }
+
 console.log(" ".repeat(20));
