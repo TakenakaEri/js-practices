@@ -11,14 +11,14 @@ const targetDate = now
   .set("month", (args.m ?? now.month() + 1) - 1)
   .startOf("month");
 
-const monthName = targetDate.format("M月 YYYY");
-const dayOfWeek = "日 月 火 水 木 金 土";
+const monthHeader = targetDate.format("M月 YYYY");
+const dayOfWeekHeader = "日 月 火 水 木 金 土";
 
-console.log(`      ${monthName}`);
-console.log(dayOfWeek);
+console.log(`      ${monthHeader}`);
+console.log(dayOfWeekHeader);
 
-const firstDayOfWeek = targetDate.day();
-let calendarLine = Array(firstDayOfWeek).fill("  ");
+const startDayIndex = targetDate.day();
+let calendarLine = Array(startDayIndex).fill("  ");
 
 const endDate = targetDate.endOf("month");
 
