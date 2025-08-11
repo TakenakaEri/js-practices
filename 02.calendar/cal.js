@@ -27,8 +27,8 @@ for (
   currentDate.isSameOrBefore(endDate);
   currentDate = currentDate.add(1, "day")
 ) {
-  const padded = String(currentDate.date()).padStart(2, " ");
-  calendarLine.push(padded);
+  const dayString = String(currentDate.date()).padStart(2, " ");
+  calendarLine.push(dayString);
 
   if (currentDate.day() === 6) {
     console.log(calendarLine.join(" "));
