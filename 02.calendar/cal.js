@@ -24,7 +24,7 @@ const endDate = baseMonth.endOf("month");
 
 for (
   let dateObj = baseMonth;
-  dateObj.isSame(endDate) || dateObj.isBefore(endDate);
+  dateObj.isSameOrBefore(endDate);
   dateObj = dateObj.add(1, "day")
 ) {
   const padded = String(dateObj.date()).padStart(2, " ");
