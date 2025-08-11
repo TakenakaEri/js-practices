@@ -6,24 +6,24 @@ import dayjs from "dayjs";
 const args = minimist(process.argv.slice(2));
 
 const now = dayjs();
-const targetDate = now
+const baseMonth = now
   .set("year", args.y ?? now.year())
   .set("month", (args.m ?? now.month() + 1) - 1)
   .startOf("month");
 
-const monthHeader = targetDate.format("M月 YYYY");
+const monthHeader = baseMonth.format("M月 YYYY");
 const dayOfWeekHeader = "日 月 火 水 木 金 土";
 
 console.log(`      ${monthHeader}`);
 console.log(dayOfWeekHeader);
 
-const startDayIndex = targetDate.day();
+const startDayIndex = baseMonth.day();
 let calendarLine = Array(startDayIndex).fill("  ");
 
-const endDate = targetDate.endOf("month");
+const endDate = baseMonth.endOf("month");
 
 for (
-  let dateObj = targetDate;
+  let dateObj = baseMonth;
   dateObj.isSame(endDate) || dateObj.isBefore(endDate);
   dateObj = dateObj.add(1, "day")
 ) {
