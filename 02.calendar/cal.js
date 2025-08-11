@@ -23,14 +23,14 @@ let calendarLine = Array(startDayIndex).fill("  ");
 const endDate = baseMonth.endOf("month");
 
 for (
-  let dateObj = baseMonth;
-  dateObj.isSameOrBefore(endDate);
-  dateObj = dateObj.add(1, "day")
+  let currentDate = baseMonth;
+  currentDate.isSameOrBefore(endDate);
+  currentDate = currentDate.add(1, "day")
 ) {
-  const padded = String(dateObj.date()).padStart(2, " ");
+  const padded = String(currentDate.date()).padStart(2, " ");
   calendarLine.push(padded);
 
-  if (dateObj.day() === 6) {
+  if (currentDate.day() === 6) {
     console.log(calendarLine.join(" "));
     calendarLine = [];
   }
