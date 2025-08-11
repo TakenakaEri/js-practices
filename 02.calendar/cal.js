@@ -39,5 +39,3 @@ for (
 if (calendarLine.length > 0) {
   console.log(calendarLine.join(" "));
 }
-
-console.log(" ".repeat(20));
