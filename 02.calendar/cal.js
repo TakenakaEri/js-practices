@@ -3,6 +3,10 @@
 import minimist from "minimist";
 import dayjs from "dayjs";
 
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore.js";
+
+dayjs.extend(isSameOrBefore);
+
 const args = minimist(process.argv.slice(2));
 
 const now = dayjs();
