@@ -9,24 +9,25 @@ dayjs.extend(isSameOrBefore);
 const args = minimist(process.argv.slice(2));
 
 const now = dayjs();
-const baseMonth = now
+const baseDate = now
   .set("year", args.y ?? now.year())
   .set("month", (args.m ?? now.month() + 1) - 1)
   .startOf("month");
 
-const monthHeader = baseMonth.format("M月 YYYY");
+console.log(baseDate);
+
+const monthHeader = baseDate.format("M月 YYYY");
 const dayOfWeekHeader = "日 月 火 水 木 金 土";
 
 console.log(`      ${monthHeader}`);
 console.log(dayOfWeekHeader);
 
-const startDayIndex = baseMonth.day();
-let calendarLine = Array(startDayIndex).fill("  ");
+let calendarLine = Array(baseDate.day()).fill("  ");
 
-const endDate = baseMonth.endOf("month");
+const endDate = baseDate.endOf("month");
 
 for (
-  let currentDate = baseMonth;
+  let currentDate = baseDate;
   currentDate.isSameOrBefore(endDate);
   currentDate = currentDate.add(1, "day")
 ) {
