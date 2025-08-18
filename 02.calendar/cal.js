@@ -9,12 +9,11 @@ dayjs.extend(isSameOrBefore);
 const args = minimist(process.argv.slice(2));
 
 const now = dayjs();
+
 const baseDate = now
   .set("year", args.y ?? now.year())
   .set("month", (args.m ?? now.month() + 1) - 1)
   .startOf("month");
-
-console.log(baseDate);
 
 const monthHeader = baseDate.format("M月 YYYY");
 const dayOfWeekHeader = "日 月 火 水 木 金 土";
