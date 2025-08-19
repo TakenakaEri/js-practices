@@ -7,13 +7,11 @@ import isSameOrBefore from "dayjs/plugin/isSameOrBefore.js";
 dayjs.extend(isSameOrBefore);
 
 const args = minimist(process.argv.slice(2));
-
 const now = dayjs();
-
-const baseDate = now
-  .set("year", args.y ?? now.year())
-  .set("month", (args.m ?? now.month() + 1) - 1)
-  .startOf("month");
+const baseDate = dayjs()
+  .year(args.y ?? now.year())
+  .month((args.m ?? now.month() + 1) - 1)
+  .date(1);
 
 const monthHeader = baseDate.format("M月 YYYY");
 const dayOfWeekHeader = "日 月 火 水 木 金 土";
@@ -33,12 +31,8 @@ for (
   const dayString = String(currentDate.date()).padStart(2, " ");
   calendarLine.push(dayString);
 
-  if (currentDate.day() === 6) {
+  if (currentDate.day() === 6 || currentDate.isSame(endDate, "day")) {
     console.log(calendarLine.join(" "));
     calendarLine = [];
   }
-}
-
-if (calendarLine.length > 0) {
-  console.log(calendarLine.join(" "));
 }
