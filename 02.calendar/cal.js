@@ -8,23 +8,23 @@ dayjs.extend(isSameOrBefore);
 
 const args = minimist(process.argv.slice(2));
 const now = dayjs();
-const firstDayOfMonth = dayjs()
+const startDate = dayjs()
   .year(args.y ?? now.year())
   .month((args.m ?? now.month() + 1) - 1)
   .date(1);
 
-const monthHeader = firstDayOfMonth.format("M月 YYYY");
+const monthHeader = startDate.format("M月 YYYY");
 const dayOfWeekHeader = "日 月 火 水 木 金 土";
 
 console.log(`      ${monthHeader}`);
 console.log(dayOfWeekHeader);
 
-let calendarLine = Array(firstDayOfMonth.day()).fill("  ");
+let calendarLine = Array(startDate.day()).fill("  ");
 
-const endDate = firstDayOfMonth.endOf("month");
+const endDate = startDate.endOf("month");
 
 for (
-  let currentDate = firstDayOfMonth;
+  let currentDate = startDate;
   currentDate.isSameOrBefore(endDate);
   currentDate = currentDate.add(1, "day")
 ) {
