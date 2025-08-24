@@ -17,8 +17,6 @@ const startDate = dayjs(
   ),
 );
 
-console.log(startDate);
-
 const monthHeader = startDate.format("M月 YYYY");
 const dayOfWeekHeader = "日 月 火 水 木 金 土";
 
@@ -31,7 +29,7 @@ const endDate = startDate.endOf("month");
 
 for (
   let currentDate = startDate;
-  currentDate.isSameOrBefore(endDate);
+  currentDate.isSameOrBefore(endDate, "day");
   currentDate = currentDate.add(1, "day")
 ) {
   const dayString = String(currentDate.date()).padStart(2, " ");
