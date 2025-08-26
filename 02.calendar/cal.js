@@ -10,7 +10,7 @@ const args = minimist(process.argv.slice(2));
 const now = dayjs();
 
 const startDate = dayjs(
-  new Date(args.y ?? now.year(), args.m ?? now.month() + 1 - 1, 1),
+  new Date(args.y ?? now.year(), (args.m ?? now.month()) - 1, 1),
 );
 
 const monthHeader = startDate.format("M月 YYYY");
