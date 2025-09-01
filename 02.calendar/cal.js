@@ -9,9 +9,10 @@ dayjs.extend(isSameOrBefore);
 const args = minimist(process.argv.slice(2));
 const now = dayjs();
 
-const startDate = dayjs(
-  new Date(args.y ?? now.year(), (args.m ?? now.month()) - 1, 1),
-);
+const year = args.y ?? now.year();
+const month = (args.m ?? now.month()) - 1;
+
+const startDate = dayjs(new Date(year, month, 1));
 
 const monthHeader = startDate.format("M月 YYYY");
 const dayOfWeekHeader = "日 月 火 水 木 金 土";
