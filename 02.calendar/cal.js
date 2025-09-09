@@ -10,8 +10,6 @@ const args = minimist(process.argv.slice(2));
 const now = dayjs();
 
 const year = args.y ?? now.year();
-// const month = args.m ? args.m - 1 : now.month();
-// const month = (args.m ?? now.month() + 1) - 1;
 const month = args.m != null ? args.m - 1 : now.month();
 
 const startDate = dayjs(new Date(year, month, 1));
