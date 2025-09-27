@@ -12,16 +12,14 @@ const now = dayjs();
 const year = args.y ?? now.year();
 const month = args.m ?? now.month() + 1;
 
-const startDate = dayjs(new Date(year, month - 1, 1));
-
 const monthHeader = `${month}月 ${year}`;
 const dayOfWeekHeader = "日 月 火 水 木 金 土";
 
 console.log(`      ${monthHeader}`);
 console.log(dayOfWeekHeader);
 
+const startDate = dayjs(new Date(year, month - 1, 1));
 let calendarLine = Array(startDate.day()).fill("  ");
-
 const endDate = startDate.endOf("month");
 
 for (
